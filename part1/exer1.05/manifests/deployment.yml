@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-v0-3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: project-v0-3
+  template:
+    metadata:
+      labels:
+        app: project-v0-3
+    spec:
+      containers:
+        - name: project-v0-3
+          image: numbers00/project-v0.3
