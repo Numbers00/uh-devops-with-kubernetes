@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-v0-7
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: project-v0-7
+  template:
+    metadata:
+      labels:
+        app: project-v0-7
+    spec:
+      volumes:
+      - name: shared-static-images
+        persistentVolumeClaim:
+          claimName: exer1-13-pv-claim
+      containers:
+      - name: project-v0-7
+        image: numbers00/project-v0-7
+        imagePullPolicy: Always
+        volumeMounts:
+          - name: shared-static-images
+            mountPath: /usr/src/app/static/images
