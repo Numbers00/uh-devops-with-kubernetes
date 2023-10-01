@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: exer1-11-pingpong
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: exer1-11-pingpong
+  template:
+    metadata:
+      labels:
+        app: exer1-11-pingpong
+    spec:
+      volumes:
+        - name: shared-log-files
+          persistentVolumeClaim:
+            claimName: pv-claim
+      containers:
+        - name: exer1-11-pingpong
+          image: numbers00/exer1-11-pingpong
+          imagePullPolicy: Always # So that it does not rely on cache
+          volumeMounts:
+            - name: shared-log-files
+              mountPath: /usr/src/app/files
