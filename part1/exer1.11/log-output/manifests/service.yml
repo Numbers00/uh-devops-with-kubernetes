@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: exer1-11-log-output-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: exer1-11-log-output
+  ports:
+    - port: 2351
+      protocol: TCP
+      targetPort: 8080

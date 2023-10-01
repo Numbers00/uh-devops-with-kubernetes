@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: exer-1-10
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: exer-1-10
+  template:
+    metadata:
+      labels:
+        app: exer-1-10
+    spec:
+      volumes: # Define volume
+      - name: shared-log-files
+        emptyDir: {} # Gets emptied when pod is moved or deleted
+      containers:
+      - name: exer-1-10-reader
+        image: numbers00/exer1.10-reader
+        volumeMounts: # Mount volume
+        - name: shared-log-files
+          mountPath: /usr/src/app/files
+      - name: exer-1-10-writer
+        image: numbers00/exer1.10-writer
+        volumeMounts: # Mount volume
+        - name: shared-log-files
+          mountPath: /usr/src/app/files
