@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: exer2-01-pingpong
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: exer2-01-pingpong
+  template:
+    metadata:
+      labels:
+        app: exer2-01-pingpong
+    spec:
+      containers:
+        - name: exer2-01-pingpong
+          image: numbers00/exer2-01-pingpong

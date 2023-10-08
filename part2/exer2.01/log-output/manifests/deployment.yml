@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: exer2-01-log-output
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: exer2-01-log-output
+  template:
+    metadata:
+      labels:
+        app: exer2-01-log-output
+    spec:
+      containers:
+      - name: exer2-01-log-output
+        image: numbers00/exer2-01-log-output
