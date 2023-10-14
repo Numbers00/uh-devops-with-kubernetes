@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: exer2-06-log-output
+  namespace: uh-exers
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: exer2-06-log-output
+  template:
+    metadata:
+      labels:
+        app: exer2-06-log-output
+    spec:
+      containers:
+      - name: exer2-06-log-output
+        image: numbers00/exer2-06-log-output
+        env:
+          - name: MESSAGE
+            valueFrom:
+              configMapKeyRef:
+                name: exer2-06-log-output-configmap
+                key: message

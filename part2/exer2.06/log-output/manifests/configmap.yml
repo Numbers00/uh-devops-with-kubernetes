@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: exer2-06-log-output-configmap
+  namespace: uh-exers
+data:
+  message: "Hello"
