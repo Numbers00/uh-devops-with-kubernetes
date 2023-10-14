@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-v1-1
+  namespace: uh-project
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: project-v1-1
+  template:
+    metadata:
+      labels:
+        app: project-v1-1
+    spec:
+      volumes:
+      - name: shared-static-images
+        persistentVolumeClaim:
+          claimName: exer2-04-pv-claim
+      containers:
+      - name: project-v1-1
+        image: numbers00/project-v1-1
+        imagePullPolicy: Always
+        volumeMounts:
+          - name: shared-static-images
+            mountPath: /usr/src/app/static/images
