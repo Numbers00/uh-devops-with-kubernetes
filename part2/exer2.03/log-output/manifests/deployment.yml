@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: exer2-03-log-output
+  namespace: uh-exers
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: exer2-03-log-output
+  template:
+    metadata:
+      labels:
+        app: exer2-03-log-output
+    spec:
+      containers:
+      - name: exer2-03-log-output
+        image: numbers00/exer2-03-log-output
